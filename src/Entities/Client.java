@@ -1,6 +1,6 @@
 package Entities;
-import Enums.HorsemanStatus;
 import Enums.SportsCategory;
+import Enums.HorsemanStatus;
 
 import java.util.UUID;
 

@@ -21,6 +21,7 @@ public class ClubAccount {
     @Override
     public String toString(){
         int earned = moneyAmount - seedCapital;
+
         return String.format("Equestrian Center earned %d$", earned);
     }
 }

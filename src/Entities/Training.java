@@ -26,6 +26,7 @@ public class Training {
     private static void proveTrainer(Trainer trainer, Client client){
         SportsCategory trainerCategory = trainer.getSportCategory();
         SportsCategory clientCategory = client.getSportCategory();
+
         if(trainerCategory.compareTo(clientCategory) < 0)
             throw new IllegalArgumentException("Trainer must have no less Sport Category level than client");
     }
@@ -33,6 +34,7 @@ public class Training {
     private static void proveHorse(Horse horse, Client client){
         HorsemanStatus clientStatus = client.getHorsemanStatus();
         HorsemanStatus horseRiderStatus = horse.getRiderStatus();
+
         if (clientStatus.compareTo(horseRiderStatus) != 0)
             throw new IllegalArgumentException("Horse rider`s status should be the same with client");
     }
@@ -40,6 +42,7 @@ public class Training {
     private static void proveClient(Horse horse, Client client){
         int horseMaxLoad = horse.getMaxLoad();
         int clientWeight = client.getWeight();
+
         if (clientWeight > horseMaxLoad)
             throw new IllegalArgumentException("Client`s weight should be no more than horse`s max.load");
     }
@@ -60,14 +63,18 @@ public class Training {
     public boolean sameTraining(Client secondClient, LocalDateTime secondDate){
         boolean sameClient = client.sameClient(secondClient);
         boolean sameDate = startTime.equals(secondDate);
+
         return sameClient && sameDate;
     }
 
     public boolean isScheduleConflict(LocalDateTime newStartTime){
         boolean isConflict = false;
+
         LocalDateTime endTime = startTime.plus(duration, ChronoUnit.MINUTES);
+
         if (newStartTime.compareTo(startTime) >0 && newStartTime.compareTo(endTime) < 0)
             isConflict = true;
+
         return isConflict;
     }
 
@@ -82,6 +89,7 @@ public class Training {
     @Override
     public String toString(){
         LocalDateTime endTime = startTime.plus(duration, ChronoUnit.MINUTES);
+
         return String.format("\nTraining %tR - %tR %tD, client - %s, trainer - %s, horse - %s",
                 startTime, endTime, startTime, client.getName(), trainer.getName(), horse.getName());
     }

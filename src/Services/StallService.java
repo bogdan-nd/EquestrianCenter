@@ -26,34 +26,32 @@ public class StallService {
     }
 
     public void removeHorse(Horse removedHorse){
-        Iterator<Horse> horseIterator = horses.iterator();
-        while(horseIterator.hasNext()){
-            if (horseIterator.next().equals(removedHorse))
-                horseIterator.remove();
-        }
+        horses.removeIf(horse -> horse.equals(removedHorse));
+
         Set<Horse> horsesOfClients = clientsHorses.keySet();
-        Iterator<Horse> horsesOfClientsIterator = horsesOfClients.iterator();
-        while(horsesOfClientsIterator.hasNext()){
-            if (horsesOfClientsIterator.next().equals(removedHorse))
-                horsesOfClientsIterator.remove();
-        }
+
+        horsesOfClients.removeIf(horse -> horse.equals(removedHorse));
     }
 
     public boolean isClientHorse(Horse horse){
         Set<Horse> horsesOfClients = clientsHorses.keySet();
+
         for(Horse secondHorse: horsesOfClients){
             if (horse.equals(secondHorse))
                 return true;
         }
+
         return false;
     }
 
     public Client getHorseOwner(Horse horse){
         Set<Horse> horsesOfClients = clientsHorses.keySet();
+
         for(Horse theHorse: horsesOfClients){
             if (theHorse.equals(horse))
                 return clientsHorses.get(theHorse);
         }
+
         return null;
     }
 
@@ -64,9 +62,11 @@ public class StallService {
     @Override
     public String toString(){
         String returnString = "";
+
         for(Horse horse:horses){
             returnString += horse.toString();
         }
+
         return returnString;
     }
 

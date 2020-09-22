@@ -36,6 +36,7 @@ public class FinanceService{
 
     public void trainingPayment(Training training){
         Client client = training.getClient();
+
         Trainer trainer = training.getTrainer();
         int trainingPrice = trainer.getTrainingPrice();
 
@@ -46,22 +47,26 @@ public class FinanceService{
     public void vetPayment(Vet vet, Client client){
         int vetConsultationPrice = vet.getConsultationPrice();
         client.spendMoney(vetConsultationPrice);
+
         clubAccount.earnMoney(vetConsultationPrice);
     }
 
     public void groomPayment(Groom groom, Client client){
         int groomCarePrice = groom.getCarePrice();
         client.spendMoney(groomCarePrice);
+
         clubAccount.earnMoney(groomCarePrice);
     }
 
     public void buyHorse(Horse horse){
         int horsePrice = horse.getPrice();
+
         clubAccount.spendMoney(horsePrice);
     }
 
     public void soldHorse(Horse horse){
         int horsePrice = horse.getPrice();
+
         clubAccount.earnMoney(horsePrice);
     }
 

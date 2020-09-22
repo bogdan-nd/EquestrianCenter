@@ -23,8 +23,10 @@ public class StaffService {
     public void hireStaff(Object staff){
         if(staff instanceof Trainer)
             trainers.add((Trainer) staff);
+
         else if(staff instanceof Groom)
             grooms.add((Groom) staff);
+        
         else if(staff instanceof Vet)
             vets.add((Vet) staff);
     }
@@ -32,8 +34,10 @@ public class StaffService {
     public void fireStaff(Object staff){
         if(staff instanceof Trainer)
             trainers.remove(staff);
+
         else if(staff instanceof Groom)
             grooms.remove(staff);
+
         else if(staff instanceof Vet)
             vets.remove(staff);
     }

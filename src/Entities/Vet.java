@@ -20,9 +20,14 @@ public final class Vet extends Workman {
         recoveredHorsesNumber += 1;
     }
 
+    public int getRecoveredHorsesNumber() {
+        return recoveredHorsesNumber;
+    }
+
     @Override
     public String toString(){
         return String.format("Vet %s, consultation Price - %d$", name, consultationPrice);
     }
+
 
 }

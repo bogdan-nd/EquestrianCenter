@@ -20,6 +20,10 @@ public class Groom extends Workman {
         return carePrice;
     }
 
+    public int getHorseFedNumber() {
+        return horseFedNumber;
+    }
+
     @Override
     public String toString(){
         return String.format("\nGroom %s, with care price - %d$", name, carePrice);

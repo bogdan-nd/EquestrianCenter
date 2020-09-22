@@ -46,8 +46,10 @@ public final class EquestrianCenter{
     public void recoverHorse(Horse horse, Vet vet){
         careService.recoverHorse(horse,vet);
         boolean isClientHorse = stallService.isClientHorse(horse);
+
         if (!isClientHorse)
             return;
+
         Client horseOwner = stallService.getHorseOwner(horse);
         financeService.vetPayment(vet, horseOwner);
     }
@@ -55,8 +57,10 @@ public final class EquestrianCenter{
     public void careHorse(Horse horse, Groom groom){
         careService.giveFood(horse,groom);
         boolean isClientHorse = stallService.isClientHorse(horse);
+
         if (!isClientHorse)
             return;
+
         Client horseOwner = stallService.getHorseOwner(horse);
         financeService.groomPayment(groom,horseOwner);
     }
@@ -72,6 +76,7 @@ public final class EquestrianCenter{
 
     public void finishTraining(Client client, LocalDateTime time) {
         Training training = scheduleService.findTraining(client, time);
+        
         scheduleService.removeTraining(client, time);
         financeService.trainingPayment(training);
     }
